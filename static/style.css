@@ -1,0 +1,571 @@
+/* ---- GENERAL RESET ---- */
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: radial-gradient(ellipse at top left, #2f1847 0%, #1a182f 100%);
+  color: #f3eaff;
+  min-height: 100vh;
+  overflow-x: auto;
+  overflow-y: auto; /* prevents vertical scroll on sufficient screen */
+}
+
+/* ---- HEADER ---- */
+.heading {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+}
+.heading span {
+  color: #bb86fc;
+  font-weight: bold;
+}
+
+/* ---- FLEX LAYOUT ---- */
+.main-flex-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  width: 100vw;
+  min-height: 80vh;
+}
+
+.column {
+  flex: 1 1 0;
+  min-width: 340px;
+  max-width: 530px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: rgba(34, 24, 72, 0.86);
+  border-radius: 18px;
+  padding: 26px 23px 23px 23px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.13);
+}
+
+.card h2, .card h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-weight: 700;
+  color: #b498fc;
+  letter-spacing: 1px;
+}
+
+/* ---- BUTTONS ---- */
+button {
+  background: linear-gradient(90deg, #7f53ac 0%, #647dee 100%);
+  color: #fff;
+  border: none;
+  padding: 11px 19px;
+  margin: 6px 4px 6px 0;
+  border-radius: 7px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.15s, transform 0.12s;
+}
+button:disabled {
+  background: #33385e;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+.big-btn {
+  font-size: 1.23em;
+  padding: 15px 32px;
+  margin-top: 10px;
+}
+
+/* ---- FAKE MIC ICON ---- */
+.mic-icon {
+  background: radial-gradient(circle, #ff64b9 0%, #5f44c0 100%);
+  display: inline-block;
+  margin-right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 45%;
+  position: relative;
+  top: 6px;
+}
+
+/* ---- AUDIO ---- */
+audio {
+  width: 100%;
+  margin-top: 7px;
+}
+
+/* ---- AI Chat/Transcript Box ---- */
+.ai-chat-box, #transcript-v1, #transcript-v2 {
+  background: rgba(72, 69, 103, 0.33);
+  border-radius: 8px;
+  padding: 13px;
+  min-height: 48px;
+  margin-top: 12px;
+  font-size: 1.06em;
+}
+
+/* ---- Chat History ---- */
+.chat-thread-list {
+  max-height: 225px;
+  overflow-y: auto;
+  margin-top: 13px;
+}
+.message-row {
+  margin-bottom: 7px;
+}
+.message-user {
+  color: #76ffcf;
+  font-weight: bold;
+}
+.message-bot {
+  color: #cba0fa;
+  font-weight: bold;
+}
+.message-text {
+  margin-left: 12px;
+}
+
+/* ---- Pulse Animation for Recording ---- */
+.pulse {
+  animation: pulse 1.3s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #f487fe66; }
+  70% { box-shadow: 0 0 0 18px #f487fe00; }
+  100% { box-shadow: 0 0 0 0 #f487fe00; }
+}
+
+/* ---- RESPONSIVE: STACK ON SMALLER SCREENS ---- */
+@media (max-width: 1000px) {
+  .main-flex-layout {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    min-height: unset;
+  }
+  .column {
+    min-width: 0;
+    max-width: 95vw;
+  }
+}
+
+/* ---- GENERAL RESET ---- */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: radial-gradient(ellipse at top left, #2f1847 0%, #1a182f 100%);
+  color: #f3eaff;
+  overflow-x: hidden;
+  overflow-y: auto; /* allow vertical scroll if needed */
+}
+
+/* ---- HEADER ---- */
+.heading {
+  text-align: center;
+  margin-top: 36px;
+  margin-bottom: 38px;
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 0 1px 8px #290c4888;
+}
+.heading span {
+  color: #bb86fc;
+  font-weight: bold;
+}
+
+/* ---- FLEX LAYOUT ---- */
+.main-flex-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 54px;
+  width: 100vw;
+  min-height: 82vh;
+  padding-bottom: 24px;
+}
+
+/* --- COLUMNS --- */
+.column {
+  flex: 1 1 0;
+  min-width: 320px;
+  max-width: 520px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: linear-gradient(132deg, #24175a 75%, #282343 100%);
+  border-radius: 18px;
+  padding: 32px 27px 28px 27px;
+  margin-bottom: 38px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: box-shadow 0.14s;
+}
+.card:hover {
+  box-shadow: 0 12px 36px 0 rgba(66, 98, 199, 0.15);
+}
+
+.card h2, .card h1 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-weight: 700;
+  color: #b498fc;
+  letter-spacing: 1px;
+  font-size: 1.35em;
+}
+
+/* ---- BUTTONS ---- */
+button {
+  background: linear-gradient(90deg, #7f53ac 0%, #647dee 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  margin: 7px 5px 9px 0;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  outline: none;
+  transition: background 0.2s, box-shadow 0.15s, transform 0.13s;
+  box-shadow: 0 2px 12px 0 #291d4633;
+}
+button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #a46afb 0%, #647dee 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 14px 0 #6d24d199;
+}
+button:disabled {
+  background: #33385e;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.big-btn {
+  font-size: 1.23em;
+  padding: 17px 32px;
+  margin-top: 12px;
+}
+
+/* ---- FAKE MIC ICON ---- */
+.mic-icon {
+  background: radial-gradient(circle, #ff64b9 0%, #5f44c0 100%);
+  display: inline-block;
+  margin-right: 12px;
+  width: 26px;
+  height: 26px;
+  border-radius: 45%;
+  position: relative;
+  top: 6px;
+  box-shadow: 0 1px 7px #bb59f545;
+}
+
+/* ---- AUDIO ---- */
+audio {
+  width: 100%;
+  margin-top: 8px;
+  background: #251641;
+  border-radius: 6px;
+}
+
+/* ---- INPUT ---- */
+input[type="text"] {
+  font-size: 1.08em;
+  border: 2px solid #6e5cb9;
+  border-radius: 6px;
+  padding: 10px 11px;
+  outline: none;
+  margin-right: 12px;
+  margin-bottom: 6px;
+  background: #140c28;
+  color: #eeebfb;
+  transition: border-color 0.18s;
+}
+input[type="text"]:focus {
+  border-color: #bb86fc;
+  background: #24175a;
+}
+
+/* ---- AI Chat/Transcript/Transcripts ---- */
+.ai-chat-box, #transcript-v1, #transcript-v2 {
+  background: rgba(72, 69, 103, 0.33);
+  border-radius: 8px;
+  padding: 14px 12px;
+  min-height: 44px;
+  margin-top: 13px;
+  font-size: 1.08em;
+  line-height: 1.45;
+}
+
+/* ---- Chat History ---- */
+.chat-thread-list {
+  max-height: 230px;
+  overflow-y: auto;
+  margin-top: 16px;
+  background: rgba(44,38,74,0.17);
+  border-radius: 6px;
+  padding: 10px 11px;
+}
+.message-row {
+  margin-bottom: 7px;
+  display: flex;
+  align-items: flex-start;
+}
+.message-user {
+  color: #76ffcf;
+  font-weight: bold;
+}
+.message-bot {
+  color: #cba0fa;
+  font-weight: bold;
+}
+.message-text {
+  margin-left: 13px;
+  font-size: 1em;
+}
+
+/* ---- Pulse Animation for Recording ---- */
+.pulse {
+  animation: pulse 1.3s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 #f487fe66; }
+  70% { box-shadow: 0 0 0 18px #f487fe00; }
+  100% { box-shadow: 0 0 0 0 #f487fe00; }
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 1120px) {
+  .main-flex-layout {
+    gap: 25px;
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .card {
+    padding: 19px 7px 14px 7px;
+  }
+}
+@media (max-width: 850px) {
+  .main-flex-layout {
+    flex-direction: column;
+    align-items: center;
+    min-height: unset;
+    gap: 0px;
+    padding-bottom: 8px;
+  }
+  .column {
+    min-width: 0;
+    max-width: 97vw;
+  }
+  .card {
+    margin-bottom: 17px;
+  }
+}
+
+@media (max-width: 570px) {
+  .heading {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 14px;
+  }
+  .card h2, .card h1 {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+}
+/* --- Voice AI Chat main record button --- */
+#record-ai {
+  background: linear-gradient(90deg, #ff5fcf 0%, #7857f7 100%);
+  color: #f7eaff;
+  font-size: 1.32em;
+  padding: 22px 34px;
+  margin: 22px 0 16px 0;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 7px 28px 0 #b384fa70;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  transition: background 0.28s, transform 0.13s, box-shadow 0.18s;
+  position: relative;
+  z-index: 5;
+}
+
+/* On hover or focus */
+#record-ai:hover:not(:disabled),
+#record-ai:focus:not(:disabled) {
+  background: linear-gradient(90deg, #ff89e5 0%, #a380fd 100%);
+  color: #fff9ff;
+  transform: scale(1.055) translateY(-2px);
+  box-shadow: 0 10px 32px #d888efac, 0 2px 8px #07092645;
+}
+
+/* --- Animated pulse effect when recording --- */
+#record-ai.pulse {
+  animation: record-pulse 1.7s infinite;
+}
+
+@keyframes record-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 207, 0.7), 0 7px 28px 0 #b384fa70;
+  }
+  70% {
+    box-shadow: 0 0 0 22px rgba(255, 95, 207, 0.04), 0 7px 28px 0 #b384fa70;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 207, 0.02), 0 7px 28px 0 #b384fa70;
+  }
+}
+
+/* Brighter mic-icon for this record button */
+#record-ai .mic-icon {
+  background: radial-gradient(circle, #ffb5e9 0%, #f058c2 55%, #5f44c0 100%);
+  border-radius: 60%;
+  width: 32px;
+  height: 32px;
+  margin-right: 13px;
+  position: relative;
+  top: 0;
+  box-shadow: 0 1px 12px #ffb8ff55;
+  transition: background 0.22s, box-shadow 0.12s;
+}
+/* Main record button: default state */
+#record-ai {
+  background: linear-gradient(90deg, #ff5fcf 0%, #7857f7 100%);
+  color: #f7eaff;
+  font-size: 1.32em;
+  padding: 22px 34px;
+  margin: 22px 0 16px 0;
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 7px 28px 0 #b384fa70;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  transition: background 0.28s, transform 0.12s, box-shadow 0.18s;
+  position: relative;
+  z-index: 5;
+}
+
+/* Active/recording color state */
+#record-ai.listening,
+#record-ai.pulse {
+  background: linear-gradient(90deg, #f42f60 0%, #e072ff 100%);
+  color: #fff9fb;
+  box-shadow: 0 0 24px 4px #ff5fcf55, 0 8px 36px 0 #a03bec70;
+}
+
+/* On hover or focus */
+#record-ai:hover:not(:disabled),
+#record-ai:focus:not(:disabled) {
+  background: linear-gradient(90deg, #ff89e5 0%, #a380fd 100%);
+  color: #fff9ff;
+  transform: scale(1.055) translateY(-2px);
+  box-shadow: 0 10px 32px #d888efac, 0 2px 8px #07092645;
+}
+
+/* --- Animated pulse effect when recording --- */
+#record-ai.pulse {
+  animation: record-pulse 1.7s infinite;
+}
+
+@keyframes record-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 207, 0.7), 0 7px 28px 0 #b384fa70;
+  }
+  70% {
+    box-shadow: 0 0 0 22px rgba(255, 95, 207, 0.16), 0 7px 28px 0 #b384fa70;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 207, 0.01), 0 7px 28px 0 #b384fa70;
+  }
+}
+
+/* Brighter mic-icon for this record button */
+#record-ai .mic-icon {
+  background: radial-gradient(circle, #ffb5e9 0%, #f058c2 55%, #5f44c0 100%);
+  border-radius: 60%;
+  width: 32px;
+  height: 32px;
+  margin-right: 13px;
+  position: relative;
+  top: 0;
+  box-shadow: 0 1px 12px #ffb8ff55;
+  transition: background 0.22s, box-shadow 0.12s;
+}
+/* ---- Generate Voice Button SPECIAL STYLE ---- */
+#generateAudio {
+  background: linear-gradient(90deg, #11cdef 0%, #677bff 100%);
+  color: #ffffff;
+  font-weight: 900;
+  border: none;
+  font-size: 1.08em;
+  letter-spacing: 0.8px;
+  border-radius: 9px;
+  padding: 13px 30px;
+  margin-left: 7px;
+  margin-bottom: 9px;
+  box-shadow: 0 4px 18px 0 #577ada51;
+  transition:
+    background 0.18s,
+    box-shadow 0.14s,
+    transform 0.10s;
+  outline: none;
+  position: relative;
+  z-index: 2;
+}
+
+#generateAudio:hover:not(:disabled),
+#generateAudio:focus:not(:disabled) {
+  background: linear-gradient(90deg, #1be9ff 0%, #87a3fb 100%);
+  color: #fffafc;
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 8px 24px #45fbe195, 0 2px 6px #6c79de66;
+}
+
+/* Pulse/flash animation on active click */
+#generateAudio:active {
+  animation: genvoice-pulse 0.38s;
+}
+
+@keyframes genvoice-pulse {
+  0% {
+    box-shadow: 0 0 0 0 #45fbe138, 0 4px 18px 0 #577ada51;
+    transform: scale(1.06);
+    background: linear-gradient(90deg, #11cdef 0%, #677bff 100%);
+  }
+  50% {
+    box-shadow: 0 0 16px 6px #45fbe199, 0 8px 24px #45fbe175;
+    transform: scale(1.13);
+    background: linear-gradient(90deg, #18f9ff 0%, #7ca8ff 100%);
+  }
+  100% {
+    box-shadow: 0 4px 18px 0 #577ada51;
+    transform: scale(1);
+    background: linear-gradient(90deg, #11cdef 0%, #677bff 100%);
+  }
+}
