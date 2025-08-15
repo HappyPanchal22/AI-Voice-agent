@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voice Agent - Day 14</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="icon" href="/static/favicon.ico" />
+</head>
+<body>
+  <h1 class="heading">Welcome to <span>Day 14</span> of Voice Agent</h1>
+
+  <div class="main-flex-layout">
+  <!-- Column 1: TTS and Echo Bot v1 -->
+  <div class="column">
+    <!-- Text-to-Speech -->
+    <section class="card" id="tts-section">
+      <h2>Generate Audio (Text-to-Speech)</h2>
+      <input type="text" id="textInput" placeholder="Type your message here!" />
+      <button id="generateAudio">Generate Voice</button>
+      <audio id="audioPlayer" controls style="margin-top:13px;"></audio>
+    </section>
+    <!-- Echo Bot v1 -->
+    <section class="card" id="echo-bot-v1-section">
+      <h2>Echo Bot v1</h2>
+      <button id="start-recording-v1">Start Recording</button>
+      <button id="stop-recording-v1" disabled>Stop Recording</button>
+      <p id="uploadStatus-v1"></p>
+      <audio id="recorded-audio-v1" controls style="margin-top:13px;"></audio>
+      <p id="transcript-v1">Transcript will appear here...</p>
+    </section>
+  </div>
+  <!-- Column 2: Voice AI Chatbot and Echo Bot v2 -->
+  <div class="column">
+    <section id="ai-voice-chat-section" class="card">
+      <h2>Voice AI Chatbot</h2>
+      <button id="record-ai" class="record-btn big-btn pulse">
+        <span class="mic-icon"></span>
+        <span id="record-button-label">Start Listening</span>
+      </button>
+      <audio id="ai-audio" controls style="display:none;"></audio>
+      <div id="ai-transcript" class="ai-chat-box">Agent transcript will show here...</div>
+      <div id="chat-history" class="chat-thread-list"></div>
+    </section>
+    <!-- Echo Bot v2 now in right column! -->
+    <section class="card" id="echo-bot-v2-section">
+      <h2>Echo Bot v2 (Murf Voice)</h2>
+      <button id="start-recording-v2">Start Recording</button>
+      <button id="stop-recording-v2" disabled>Stop Recording</button>
+      <p id="uploadStatus-v2"></p>
+      <audio id="recorded-audio-v2" controls style="margin-top:13px;"></audio>
+      <p id="transcript-v2">Transcript will appear here...</p>
+    </section>
+  </div>
+</div>
+  <script src="/static/script.js"></script>
+</body>
+</html>
