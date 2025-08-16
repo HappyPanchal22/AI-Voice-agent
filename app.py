@@ -8,6 +8,7 @@ from fastapi.templating import Jinja2Templates
 from pathlib import Path
 import uuid
 import logging
+from fastapi import WebSocket
 
 from schemas.requests import TextRequest, LLMRequest
 from schemas.responses import TTSResponse
@@ -207,3 +208,9 @@ async def chat_with_agent(session_id: str, file: UploadFile):
         "error": None
     }
 
+@app.websocket("/ws")
+async def websocket_endpoint(websocket: WebSocket):
+    await websocket.accept()
+    while True:
+        data = await websocket.receive_text()
+        await websocket.send_text(f"Echo: {data}")
