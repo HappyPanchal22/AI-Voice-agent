@@ -59,6 +59,15 @@ It started as a minimal FastAPI backend serving an HTML/JS frontend and evolved 
 - **[AssemblyAI](https://www.assemblyai.com/)** – Speech-to-Text  
 - **[Google Gemini](https://deepmind.google/technologies/gemini/)** – Conversational LLM  
 
+# 📡 Day 15: Websockets
+Built the  websocket connection between the client and the server. 🙂
+
+**Steps:**
+1. Create a websocket endpoint `/ws` on your Python FastAPI server.
+2. This endpoint will establish a websocket connection between the client and the server.
+3. Send a message to the server using a client like Postman.
+4. The server will echo back the message to the client.
+
 
 # <span> 🧩 Architecture </span>
 
@@ -71,6 +80,9 @@ flowchart TD
         A5["Play AI reply audio"]
         A6["Show transcript & bot response"]
         A7["Optionally auto-restart listening"]
+
+        C1["User types or sends a message (WebSocket)"]
+        C3["Display echoed message"]
     end
 
     %% FastAPI Backend
@@ -81,11 +93,17 @@ flowchart TD
         B4["Send context to Google Gemini → AI text reply"]
         B5["Convert AI reply to voice with Murf AI"]
         B6["Return reply audio URL, transcript, history to UI"]
+
+        S1["Receive message from WebSocket (/ws)"]
+        S2["Echo message back to client"]
     end
 
-    %% Flow connections
+    %% Flow connections (AI pipeline)
     A1 --> A2 --> B1 --> B2 --> B3 --> B4 --> B5 --> B6 --> A5
     A5 --> A6 --> A7
+
+    %% Flow connections (WebSocket echo)
+    C1 --> S1 --> S2 --> C3
 
     %% Styling for groups
     style UI fill:#fdf5e6,stroke:#ff9900,stroke-width:2px,color:#222
@@ -105,3 +123,7 @@ flowchart TD
     style B5 fill:#fff,stroke:#0066cc,stroke-width:1px,color:#222
     style B6 fill:#fff,stroke:#0066cc,stroke-width:1px,color:#222
 
+    style C1 fill:#fff,stroke:#00cc44,stroke-width:1px,color:#222
+    style C3 fill:#fff,stroke:#00cc44,stroke-width:1px,color:#222
+    style S1 fill:#fff,stroke:#00cc44,stroke-width:1px,color:#222
+    style S2 fill:#fff,stroke:#00cc44,stroke-width:1px,color:#222
