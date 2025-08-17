@@ -214,3 +214,18 @@ async def websocket_endpoint(websocket: WebSocket):
     while True:
         data = await websocket.receive_text()
         await websocket.send_text(f"Echo: {data}")
+
+@app.websocket("/ws/audio")
+async def audio_stream_endpoint(websocket: WebSocket):
+    await websocket.accept()
+
+    # Save raw audio chunks to file (webm format is easiest from browser)
+    file_path = UPLOAD_DIR / "streamed_audio.webm"
+    with open(file_path, "wb") as f:
+        try:
+            while True:
+                data = await websocket.receive_bytes()  # receive raw binary
+                f.write(data)
+        except Exception as e:
+            logger.info(f"WebSocket closed: {e}")
+
